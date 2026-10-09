@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://inventory-management-system2-h6pu.vercel.app/",
+  baseURL: "https://inventory-management-system2-2.onrender.com/api",
 });
 
 api.interceptors.request.use((config) => {
