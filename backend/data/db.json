@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Staff",
+      "email": "staff@gmail.com",
+      "password": "admin123",
+      "role": "staff"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1791484413973,
+      "name": "mobile"
+    },
+    {
+      "id": 1791486079928,
+      "name": "kk"
+    },
+    {
+      "id": 1791526548766,
+      "name": "light"
+    }
+  ],
+  "products": [
+    {
+      "id": 1791526601369,
+      "name": "mobile",
+      "code": "345td",
+      "categoryId": "1791484413973",
+      "price": 222222,
+      "quantity": 311,
+      "minStock": 3,
+      "description": "",
+      "status": "active"
+    }
+  ],
+  "suppliers": [
+   
+  ],
+  "purchases": [
+    {
+      "id": 1791526630182,
+      "supplierId": 1791526611978,
+      "productId": 1791526601369,
+      "quantity": 77,
+      "price": 777,
+      "totalAmount": 59829,
+      "purchaseDate": "2026-10-09"
+    }
+  ],
+  "stockIssues": [],
+  "stockTransactions": [
+    {
+      "id": 1791526630183,
+      "productId": 1791526601369,
+      "type": "IN",
+      "quantity": 77,
+      "referenceId": 1791526630182,
+      "date": "2026-10-09"
+    }
+  ]
+}
