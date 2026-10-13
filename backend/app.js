@@ -10,8 +10,8 @@ const purchaseRoutes = require("./routes/purchases");
 const issueRoutes = require("./routes/issues");
 const transactionRoutes = require("./routes/transactions");
 const dashboardRoutes = require("./routes/dashboard");
-
-const { auth } = require("./middleware/auth");
+const stationeryRoutes = require("./routes/stationery");
+const { auth, stationeryAuth } = require("./middleware/auth");
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
-
+app.use("/api/stationery", stationeryAuth, stationeryRoutes);
 app.use("/api/categories", auth, categoryRoutes);
 app.use("/api/products", auth, productRoutes);
 app.use("/api/suppliers", auth, supplierRoutes);

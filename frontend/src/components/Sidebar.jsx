@@ -10,6 +10,13 @@ const navigation = [
   { name: "Stock History", path: "/history", icon: "◷", admin: false },
 ];
 
+const stationeryNavigation = [
+  { name: "Stationery Dashboard", path: "/stationery", icon: "☷" },
+  { name: "Add Stationery Item", path: "/stationery/add", icon: "＋" },
+  { name: "Stock Received", path: "/stationery/receive", icon: "📥" },
+  { name: "Distribute Items", path: "/stationery/distribute", icon: "📤" },
+];
+
 function Sidebar() {
   let user = null;
 
@@ -50,6 +57,27 @@ function Sidebar() {
               <span className="nav-arrow">›</span>
             </NavLink>
           ))}
+      </nav>
+
+      <div className="sidebar-label" style={{ marginTop: "18px" }}>
+        STATIONERY MANAGEMENT
+      </div>
+
+      <nav className="sidebar-nav">
+        {stationeryNavigation.map((item) => (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            end={item.path === "/stationery"}
+            className={({ isActive }) =>
+              `nav-link ${isActive ? "active" : ""}`
+            }
+          >
+            <span className="nav-icon">{item.icon}</span>
+            <span>{item.name}</span>
+            <span className="nav-arrow">›</span>
+          </NavLink>
+        ))}
       </nav>
 
       <div className="sidebar-footer">

@@ -43,7 +43,20 @@
     }
   ],
   "suppliers": [
-   
+    {
+      "id": 1791526611978,
+      "name": "ABC Stationery Store",
+      "email": "abcstationery@gmail.com",
+      "phone": "9876543210",
+      "address": "College Road, Central Market"
+    },
+    {
+      "id": 1791526611979,
+      "name": "National Paper Mart",
+      "email": "papermart@gmail.com",
+      "phone": "9812345678",
+      "address": "Station Road, Industrial Area"
+    }
   ],
   "purchases": [
     {
@@ -54,6 +67,82 @@
       "price": 777,
       "totalAmount": 59829,
       "purchaseDate": "2026-10-09"
+    }
+  ],
+  "stationeryItems": [
+    {
+      "id": "ITEM-1791908664210-751bfa9a",
+      "name": "pen",
+      "category": "Notebooks & Registers",
+      "unit": "Piece",
+      "currentStock": 49,
+      "minimumStock": 10,
+      "createdAt": "2026-10-13T16:24:24.211Z"
+    },
+    {
+      "id": "ITEM-1791909473833-4aef1527",
+      "name": "Ball Pen",
+      "category": "Writing Instruments",
+      "unit": "Piece",
+      "currentStock": 17,
+      "minimumStock": 5,
+      "createdAt": "2026-10-13T16:37:53.834Z"
+    }
+  ],
+  "stockReceipts": [
+    {
+      "id": "REC-1791908903159-74bc509d",
+      "itemId": "ITEM-1791908664210-751bfa9a",
+      "itemName": "pen",
+      "supplierName": "ABC Stationery Store",
+      "quantity": 50,
+      "receivedDate": "2026-10-13",
+      "invoiceNumber": "4gytuy",
+      "remarks": "",
+      "createdAt": "2026-10-13T16:28:23.160Z"
+    },
+    {
+      "id": "REC-1791909473877-811c86d3",
+      "itemId": "ITEM-1791909473833-4aef1527",
+      "itemName": "Ball Pen",
+      "supplierName": "ABC Stationery Store",
+      "quantity": 20,
+      "receivedDate": "2026-10-13",
+      "invoiceNumber": "INV-2026-001",
+      "remarks": "Initial consignment of ball pens",
+      "createdAt": "2026-10-13T16:37:53.878Z"
+    }
+  ],
+  "itemDistributions": [
+    {
+      "id": "DIST-1791908959936-794fef50",
+      "itemId": "ITEM-1791908664210-751bfa9a",
+      "itemName": "pen",
+      "quantity": 1,
+      "recipientName": "rahil",
+      "recipientId": "2025btcs67",
+      "recipientType": "Student",
+      "department": "s60",
+      "reason": "appriciate",
+      "issuedBy": "Admin",
+      "issueDate": "2026-10-13",
+      "remarks": "",
+      "createdAt": "2026-10-13T16:29:19.936Z"
+    },
+    {
+      "id": "DIST-1791909473941-37db5676",
+      "itemId": "ITEM-1791909473833-4aef1527",
+      "itemName": "Ball Pen",
+      "quantity": 3,
+      "recipientName": "Rahul Sharma",
+      "recipientId": "STU-2026-101",
+      "recipientType": "Student",
+      "department": "Computer Science",
+      "reason": "Mid-term examination",
+      "issuedBy": "Admin",
+      "issueDate": "2026-10-13",
+      "remarks": "Requisition #01",
+      "createdAt": "2026-10-13T16:37:53.941Z"
     }
   ],
   "stockIssues": [],

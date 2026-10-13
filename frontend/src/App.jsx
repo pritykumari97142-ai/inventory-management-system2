@@ -12,6 +12,12 @@ import Purchases from "./pages/Purchases";
 import Issues from "./pages/Issues";
 import StockHistory from "./pages/StockHistory";
 
+// New Stationery Pages
+import StationeryDashboard from "./pages/StationeryDashboard";
+import StockReceived from "./pages/StockReceived";
+import DistributeItems from "./pages/DistributeItems";
+import AddStationeryItem from "./pages/AddStationeryItem";
+
 function Layout() {
   return (
     <div className="app-layout">
@@ -22,6 +28,7 @@ function Layout() {
 
         <main className="content">
           <Routes>
+            {/* Existing Pages */}
             <Route path="/" element={<Dashboard />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/products" element={<Products />} />
@@ -29,6 +36,18 @@ function Layout() {
             <Route path="/purchases" element={<Purchases />} />
             <Route path="/issues" element={<Issues />} />
             <Route path="/history" element={<StockHistory />} />
+
+            {/* New Stationery Pages */}
+            <Route path="/stationery" element={<StationeryDashboard />} />
+            <Route path="/stationery/add" element={<AddStationeryItem />} />
+            <Route path="/stationery/receive" element={<StockReceived />} />
+            <Route
+              path="/stationery/distribute"
+              element={<DistributeItems />}
+            />
+
+            {/* Unknown path */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
       </div>
@@ -42,11 +61,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/" replace /> : <Login />}
+        />
 
         <Route
           path="/*"
-          element={user ? <Layout /> : <Navigate to="/login" />}
+          element={user ? <Layout /> : <Navigate to="/login" replace />}
         />
       </Routes>
     </BrowserRouter>
