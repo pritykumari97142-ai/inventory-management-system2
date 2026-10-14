@@ -1442,3 +1442,53 @@ td strong {
   color: #3730a3;
   text-decoration: underline;
 }
+
+/* STAT CARD INFORMATION BLOCK */
+.stat-information {
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-information span {
+  display: block;
+  color: #7e899e;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.stat-information h3 {
+  margin: 0 0 2px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #18233b;
+}
+
+.stat-information small {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+/* SIDEBAR NAV WRAPPER */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* LOADING SPINNER */
+.loading-spinner {
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto;
+  border: 3px solid #e0e7ff;
+  border-top-color: #4f46e5;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

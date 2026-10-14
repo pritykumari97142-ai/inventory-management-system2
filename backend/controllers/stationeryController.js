@@ -219,19 +219,20 @@ exports.receiveStock = (req, res) => {
 exports.distributeItem = (req, res) => {
   try {
     const itemId = getText(req.body.itemId);
-    const recipientName = getText(req.body.recipientName);
-    const recipientId = getText(req.body.recipientId);
-    const recipientType = getText(req.body.recipientType);
+    // Accept both new field names (studentName/admissionNumber) and legacy names
+    const recipientName = getText(req.body.studentName || req.body.recipientName);
+    const recipientId = getText(req.body.admissionNumber || req.body.recipientId);
+    const recipientType = getText(req.body.recipientType) || "Student";
     const department = getText(req.body.department);
-    const reason = getText(req.body.reason);
+    const reason = getText(req.body.reason) || "Distribution";
     const issuedBy = getText(req.body.issuedBy) || "Admin";
     const issueDate = getText(req.body.issueDate);
     const remarks = getText(req.body.remarks);
     const quantity = getNumber(req.body.quantity);
 
-    if (!itemId || !recipientName || !recipientType || !reason || !issueDate) {
+    if (!itemId || !recipientName || !issueDate) {
       return res.status(400).json({
-        message: "Item, recipient name, recipient type, date, and reason are required.",
+        message: "Item, student name, and date are required.",
       });
     }
 
@@ -316,5 +317,72 @@ exports.getDistributions = (req, res) => {
     res.json(distributions);
   } catch (error) {
     res.status(500).json({ message: "Could not load distribution history." });
+  }
+};
+
+// DELETE /api/stationery/distributions/:id
+exports.deleteDistribution = (req, res) => {
+  try {
+    const { id } = req.params;
+    const db = readDatabase();
+
+    const index = db.itemDistributions.findIndex((d) => String(d.id) === String(id));
+    if (index === -1) {
+      return res.status(404).json({ message: "Distribution record not found." });
+    }
+
+    const removed = db.itemDistributions.splice(index, 1)[0];
+    saveDatabase(db);
+
+    res.json({
+      message: `Distribution deleted. ${removed.quantity} unit(s) of "${removed.itemName}" restored to stock.`,
+      restored: removed.quantity,
+      itemName: removed.itemName,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Could not delete distribution record." });
+  }
+};
+
+// DELETE /api/stationery/receipts/:id
+exports.deleteReceipt = (req, res) => {
+  try {
+    const { id } = req.params;
+    const db = readDatabase();
+
+    const index = db.stockReceipts.findIndex((r) => String(r.id) === String(id));
+    if (index === -1) {
+      return res.status(404).json({ message: "Stock receipt not found." });
+    }
+
+    const receipt = db.stockReceipts[index];
+
+    // Safety check: ensure deleting this receipt won't make available stock negative
+    const totalReceivedForItem = db.stockReceipts
+      .filter((r) => String(r.itemId) === String(receipt.itemId))
+      .reduce((sum, r) => sum + (Number(r.quantity) || 0), 0);
+
+    const totalDistributedForItem = db.itemDistributions
+      .filter((d) => String(d.itemId) === String(receipt.itemId))
+      .reduce((sum, d) => sum + (Number(d.quantity) || 0), 0);
+
+    const newTotalReceived = totalReceivedForItem - receipt.quantity;
+
+    if (newTotalReceived < totalDistributedForItem) {
+      return res.status(400).json({
+        message: `Cannot delete this receipt. Deleting it would make the total received (${newTotalReceived}) less than already distributed (${totalDistributedForItem}) for "${receipt.itemName}". Delete some distributions first.`,
+      });
+    }
+
+    db.stockReceipts.splice(index, 1);
+    saveDatabase(db);
+
+    res.json({
+      message: `Stock receipt deleted. ${receipt.quantity} unit(s) of "${receipt.itemName}" removed from total received.`,
+      itemName: receipt.itemName,
+      quantity: receipt.quantity,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Could not delete stock receipt." });
   }
 };

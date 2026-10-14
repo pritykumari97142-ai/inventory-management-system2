@@ -10,11 +10,9 @@ const navigation = [
   { name: "Stock History", path: "/history", icon: "◷", admin: false },
 ];
 
+// Single unified stationery management link
 const stationeryNavigation = [
-  { name: "Stationery Dashboard", path: "/stationery", icon: "☷" },
-  { name: "Add Stationery Item", path: "/stationery/add", icon: "＋" },
-  { name: "Stock Received", path: "/stationery/receive", icon: "📥" },
-  { name: "Distribute Items", path: "/stationery/distribute", icon: "📤" },
+  { name: "Stationery Management", path: "/stationery", icon: "☷" },
 ];
 
 function Sidebar() {
@@ -68,7 +66,6 @@ function Sidebar() {
           <NavLink
             key={item.path}
             to={item.path}
-            end={item.path === "/stationery"}
             className={({ isActive }) =>
               `nav-link ${isActive ? "active" : ""}`
             }

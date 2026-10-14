@@ -87,6 +87,24 @@
       "currentStock": 17,
       "minimumStock": 5,
       "createdAt": "2026-10-13T16:37:53.834Z"
+    },
+    {
+      "id": "ITEM-1791989905881-1b734e49",
+      "name": "tshirt",
+      "category": "Office Supplies",
+      "unit": "Set",
+      "currentStock": 4,
+      "minimumStock": 10,
+      "createdAt": "2026-10-14T14:58:25.882Z"
+    },
+    {
+      "id": "ITEM-1791990127465-ce6db2ba",
+      "name": "notebook",
+      "category": "Notebooks & Registers",
+      "unit": "Piece",
+      "currentStock": 44,
+      "minimumStock": 10,
+      "createdAt": "2026-10-14T15:02:07.465Z"
     }
   ],
   "stockReceipts": [
@@ -111,6 +129,28 @@
       "invoiceNumber": "INV-2026-001",
       "remarks": "Initial consignment of ball pens",
       "createdAt": "2026-10-13T16:37:53.878Z"
+    },
+    {
+      "id": "REC-1791989932800-76ab5c48",
+      "itemId": "ITEM-1791989905881-1b734e49",
+      "itemName": "tshirt",
+      "supplierName": "abc",
+      "quantity": 4,
+      "receivedDate": "2026-10-14",
+      "invoiceNumber": "123",
+      "remarks": "",
+      "createdAt": "2026-10-14T14:58:52.800Z"
+    },
+    {
+      "id": "REC-1791990152736-765c3b65",
+      "itemId": "ITEM-1791990127465-ce6db2ba",
+      "itemName": "notebook",
+      "supplierName": "abc",
+      "quantity": 45,
+      "receivedDate": "2026-10-14",
+      "invoiceNumber": "",
+      "remarks": "",
+      "createdAt": "2026-10-14T15:02:32.736Z"
     }
   ],
   "itemDistributions": [
@@ -130,19 +170,34 @@
       "createdAt": "2026-10-13T16:29:19.936Z"
     },
     {
-      "id": "DIST-1791909473941-37db5676",
+      "id": "DIST-1791989611540-f8d7d02b",
       "itemId": "ITEM-1791909473833-4aef1527",
       "itemName": "Ball Pen",
       "quantity": 3,
       "recipientName": "Rahul Sharma",
       "recipientId": "STU-2026-101",
       "recipientType": "Student",
-      "department": "Computer Science",
-      "reason": "Mid-term examination",
+      "department": "",
+      "reason": "Distribution",
       "issuedBy": "Admin",
       "issueDate": "2026-10-13",
       "remarks": "Requisition #01",
-      "createdAt": "2026-10-13T16:37:53.941Z"
+      "createdAt": "2026-10-14T14:53:31.541Z"
+    },
+    {
+      "id": "DIST-1791990184642-ce2c66f8",
+      "itemId": "ITEM-1791990127465-ce6db2ba",
+      "itemName": "notebook",
+      "quantity": 1,
+      "recipientName": "rohan",
+      "recipientId": "2024btcs324",
+      "recipientType": "Student",
+      "department": "",
+      "reason": "Distribution",
+      "issuedBy": "Admin",
+      "issueDate": "2026-10-14",
+      "remarks": "",
+      "createdAt": "2026-10-14T15:03:04.642Z"
     }
   ],
   "stockIssues": [],
