@@ -726,7 +726,7 @@ export default function StationeryManagement() {
             <input id="dist-date" type="date" value={distForm.issueDate} onChange={(e) => setDistForm((p) => ({ ...p, issueDate: e.target.value }))} required />
           </div>
           <div className="form-group">
-            <label htmlFor="dist-rem">Remarks</label>
+            <label htmlFor="dist-rem">Reason</label>
             <input id="dist-rem" type="text" value={distForm.remarks} onChange={(e) => setDistForm((p) => ({ ...p, remarks: e.target.value }))} placeholder="e.g. For mid-term exam" />
           </div>
           <div style={{ gridColumn: "1 / -1", display: "flex", gap: "10px" }}>
@@ -782,7 +782,7 @@ export default function StationeryManagement() {
                     <td>
                       {item.available === 0 ? <span className="badge danger">Out of Stock</span>
                         : item.available <= item.minimumStock ? <span className="badge warning">Low Stock</span>
-                        : <span className="badge success">In Stock</span>}
+                          : <span className="badge success">In Stock</span>}
                     </td>
                     <td>
                       <button className="primary-btn" style={{ minHeight: "30px", padding: "5px 12px", fontSize: "11px" }} onClick={() => setSelectedItem(item)}>
